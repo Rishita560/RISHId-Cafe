@@ -213,7 +213,7 @@ def create_order():
             <p>See you soon!</p>
         </body></html>
         """
-        send_notification_email(user_email, "Your RISHI'd Café Order Receipt", customer_html)
+        # send_notification_email(user_email, "Your RISHI'd Café Order Receipt", customer_html)
 
         # SEND EMAIL TO ADMIN (Company Mail)
         admin_html = f"""
@@ -232,7 +232,7 @@ def create_order():
         </body></html>
         """
         # Send to the company email explicitly
-        send_notification_email(os.environ.get('MAIL_USERNAME'), f"New Order from {user_email}", admin_html)
+        # send_notification_email(os.environ.get('MAIL_USERNAME'), f"New Order from {user_email}", admin_html)
 
         return jsonify({"success": True, "order_id": order_id})
     except Exception as e:
@@ -264,7 +264,7 @@ def create_reservation():
             </body>
         </html>
         """
-        send_notification_email(user_email, "Reservation Confirmed - RISHI'd Café", email_body)
+        # send_notification_email(user_email, "Reservation Confirmed - RISHI'd Café", email_body)
 
         cursor.close()
         conn.close()
@@ -352,7 +352,7 @@ def update_order():
             </body></html>
             """
             
-        send_notification_email(user_email, subject, body)
+        # send_notification_email(user_email, subject, body)
     
     cursor.close()
     conn.close()
