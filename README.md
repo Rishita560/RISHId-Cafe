@@ -37,28 +37,32 @@ Built with a responsive vanilla frontend and a robust Python/Flask backend, this
 To run this project on your local machine for development or testing:
 
 1️. Clone the Repository
-
+```bash
 git clone https://github.com/Rishita560/RISHId-Cafe.git
 cd rishid-cafe
-
+```
 2️. Install Dependencies
-
+```bash
 pip install -r requirements.txt
-
+```
 3. Set Environment Variables
-
+```bash
 Create a .env file in the root directory and add your database credentials:
 
 DB_HOST=your_database_host
+
 DB_PORT=your_database_port
+
 DB_USER=your_database_user
+
 DB_PASSWORD=your_database_password
+
 DB_NAME=your_database_name
-
+```
 4. Start the Server
-
+```
 python app.py
-
+```
 The application will run at:
 
 http://localhost:5000
