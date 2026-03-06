@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> RISHI'd Café </title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="announcement-bar">Free shipping on all coffee subscriptions. Shop now.</div>
+
+    <header>
+        <div class="nav-container">
+            <a onclick="navigateTo('sec-home')" class="logo"> RISHI'd Café </a>
+            <nav class="desktop-nav">
+                <a onclick="navigateTo('sec-home')" class="nav-link active"> Home </a>
+                <a onclick="navigateTo('sec-about')" class="nav-link"> About </a>
+                <a onclick="navigateTo('sec-menu')" class="nav-link"> Menu </a>
+                <a onclick="handleBookingClick()" class="nav-link"> Booking </a>
+                <a onclick="navigateTo('sec-contact')" class="nav-link"> Contact </a>
+                <a onclick="handleAuthClick()" class="nav-link login-btn" id="navAuthBtn"> Login </a>
+            </nav>
+            <i class="fas fa-bars hamburger" id="openMenu"></i>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <i class="fas fa-times close-menu" id="closeMenu"></i>
+        <a onclick="navigateTo('sec-home')"> Home </a>
+        <a onclick="navigateTo('sec-about')"> About </a>
+        <a onclick="navigateTo('sec-menu')"> Menu </a>
+        <a onclick="handleBookingClick()"> Booking </a>
+        <a onclick="navigateTo('sec-contact')"> Contact </a>
+        <a onclick="handleAuthClick()" style="color: var(--accent-rust); border-bottom: none; margin-top: 20px;" id="mobileAuthBtn"> Login </a>
+    </div>
+
+    <div id="sec-home" class="page-section active">
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 style="font-size: 64px;"> Roast mein Perfection, Brew mein Passion. </h1>
+                <p> Fresh single-origin drops, Classics still winning. </p>
+                <a onclick="navigateTo('sec-menu')" class="btn" style="margin-top: 25px;"> View Menu </a>
+            </div>
+        </section>
+
+        <section class="products-section">
+            <div class="section-header"><h2> Fresh Arrivals </h2></div>
+            <div class="grid-container">
+                <div class="product-card" onclick="navigateTo('sec-menu')">
+                    <div class="product-img-wrapper">
+                        <img src="image/Hayes Valley.png" alt="Hayes Valley" class="product-img">
+                    </div>
+                    <h3 class="product-title"> Hayes Valley </h3>
+                    <span class="product-meta"> Dark Signature Espresso </span>
+                </div>
+                <div class="product-card" onclick="navigateTo('sec-menu')">
+                    <div class="product-img-wrapper">
+                        <img src="image/Librarian's Blend.png" alt=" Librarian's Blend" class="product-img">
+                    </div>
+                    <h3 class="product-title"> Librarian's Blend </h3>
+                    <span class="product-meta"> Dark & Zesty Roast </span>
+                </div>
+                <div class="product-card" onclick="navigateTo('sec-menu')">
+                    <div class="product-img-wrapper">
+                        <img src="image/Black Cat.png" alt="Black Cat" class="product-img">
+                    </div>
+                    <h3 class="product-title"> Black Cat </h3>
+                    <span class="product-meta"> Classic Espresso Blend </span>
+                </div>
+                <div class="product-card" onclick="navigateTo('sec-menu')">
+                    <div class="product-img-wrapper">
+                        <img src="image/Forty-Six.png" alt="Forty-Six" class="product-img">
+                    </div>
+                    <h3 class="product-title"> Forty-Six </h3>
+                    <span class="product-meta"> Dark & Smoky Blend </span>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper" style="padding-top: 0;">
+            <div class="section-header">
+                <h2> Frequently Asked Questions </h2>
+            </div>
+            <div class="faq-container">
+                <details>
+                    <summary> 
+                        Do you offer vegan or gluten-free options? 
+                    </summary>
+                    <div class="faq-content">
+                        Yes! We offer a variety of plant-based milks and vegan/gluten-free pastry options.
+                    </div>
+                </details>
+                <details>
+                    <summary> 
+                        Do I need to book a table in advance?
+                    </summary>
+                    <div class="faq-content">
+                        Walk-ins are welcome, but we recommend booking a table during busy weekend hours.
+                    </div>
+                </details>
+                <details>
+                    <summary> 
+                        Is there free Wi-Fi and outlets for working?
+                    </summary>
+                    <div class="faq-content">
+                        Absolutely. RISHI'd Café has fast, free Wi-Fi and plenty of power outlets available.
+                    </div>
+                </details>
+                <details>
+                    <summary>
+                        Are pets allowed in the cafe?
+                    </summary>
+                    <div class="faq-content">
+                        Well-behaved pets are welcome on our outdoor patio.
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section class="wrapper" style="padding-top: 0; padding-bottom: 80px;">
+            <div class="form-box" style="max-width: 600px; text-align: center;">
+                <h2 style="margin-bottom: 10px;"> Stay in the Loop </h2>
+                <p style="color: #666; margin-bottom: 25px;"> 
+                    Sign up for email to get the latest on new releases and events. 
+                </p>
+                <form onsubmit="event.preventDefault(); alert('Subscribed successfully!'); this.reset();">
+                    <div class="form-group">
+                        <input type="email" placeholder="Your email address" required style="text-align: center;">
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;"> 
+                        Sign Up
+                    </button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <div id="sec-about" class="page-section">
+        <section class="sub-hero" style="background-image: url('image/Story.png');">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1> Our Story </h1>
+            </div>
+        </section>
+
+        <section class="wrapper" style="text-align: center; padding-bottom: 60px;">
+            <p style="font-size: 20px; color: var(--accent-rust); font-family: var(--font-heading); font-style: italic; margin-bottom: 30px;">
+                "More than just a coffee shop, we are your second living room."
+            </p>
+            <p style="font-size: 16px; color: #555; max-width: 800px; margin: 0 auto 20px; line-height: 1.8;">
+                RISHI’d Café started with one thought: good coffee hits different when the food’s just as good and the space feels like home. Founded in the heart of the city, we set out to build a community hub where creatives, professionals, and friends could gather over a truly exceptional cup of coffee.
+            </p>
+            <p style="font-size: 16px; color: #555; max-width: 800px; margin: 0 auto; line-height: 1.8;">
+                We’re not just about roasting beans — we’re about creating your everyday hangout. Every pastry is baked fresh daily, and every shot of espresso is pulled with precision, passion, and care by our expert baristas.
+            </p>
+        </section>
+
+        <section class="wrapper" style="padding-top: 60px; border-top: 1px solid var(--border-color);">
+            <div class="section-header">
+                <h2> What We Stand For </h2>
+            </div>
+            <div class="grid-container" style="text-align: center; gap: 30px;">
+                <div class="form-box" style="padding: 30px 20px; max-width: 100%; border: none; box-shadow: none; background: transparent;">
+                    <i class="fas fa-leaf" style="font-size: 40px; color: var(--accent-rust); margin-bottom: 20px;"></i>
+                    <h3 style="margin-bottom: 10px; font-size: 20px;"> 
+                        Ethically Sourced 
+                    </h3>
+                    <p style="color: #666; font-size: 15px;"> 
+                        We partner directly with farmers to ensure fair wages and sustainable growing practices for every single bean. 
+                    </p>
+                </div>
+                
+                <div class="form-box" style="padding: 30px 20px; max-width: 100%; border: none; box-shadow: none; background: transparent;">
+                    <i class="fas fa-fire" style="font-size: 40px; color: var(--accent-rust); margin-bottom: 20px;"></i>
+                    <h3 style="margin-bottom: 10px; font-size: 20px;"> 
+                        Locally Roasted 
+                    </h3>
+                    <p style="color: #666; font-size: 15px;"> 
+                        Our signature blends are roasted in small batches right here in town to guarantee maximum freshness in your cup. 
+                    </p>
+                </div>
+                
+                <div class="form-box" style="padding: 30px 20px; max-width: 100%; border: none; box-shadow: none; background: transparent;">
+                    <i class="fas fa-hands-helping" style="font-size: 40px; color: var(--accent-rust); margin-bottom: 20px;"></i>
+                    <h3 style="margin-bottom: 10px; font-size: 20px;">
+                        Community First
+                    </h3>
+                    <p style="color: #666; font-size: 15px;">
+                        From hosting local musicians to showcasing neighborhood artists, we believe in giving back to the city we love.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="sec-menu" class="page-section">
+        <section class="sub-hero" style="background-image: url('image/Menu.png');">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1> Our Menu </h1>
+            </div>
+        </section>
+        <section class="wrapper">
+            <p style="text-align: center; color: #555; margin-bottom:40px;" id="menuIntroMsg">
+                Login to your customer account to add items to your bill.
+            </p>
+            <div class="menu-grid"></div>
+        </section>
+    </div>
+
+    <div id="sec-role-select" class="page-section">
+        <div class="login-wrapper">
+            <div class="role-container">
+                <h2> Welcome to RISHI’d Café </h2>
+                <p> Please select how you would like to sign in today. </p>
+                
+                <div class="role-cards">
+                    <div class="role-card" onclick="navigateTo('sec-customer-login')"><i class="fas fa-user"></i>
+                        <h3> I am a Customer </h3>
+                        <p style="font-size: 14px; margin:0;"> Login to order food and book tables. </p>
+                    </div>
+                    <div class="role-card" onclick="navigateTo('sec-admin-login')"><i class="fas fa-user-shield"></i>
+                        <h3> I am Staff </h3>
+                        <p style="font-size: 14px; margin:0;"> Login to the Admin Dashboard. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="sec-customer-login" class="page-section">
+        <div class="login-wrapper">
+            <div class="form-box">
+                <h2> Customer Login </h2>
+                <p style="text-align:center; color:#666; margin-bottom:20px;"> 
+                    Please login to place an order or book a table. 
+                </p>
+                <form id="customerLoginForm">
+                    <div class="error-msg" id="custLoginError"></div>
+                    <div class="form-group">
+                        <label> Email Address </label>
+                        <input type="email" id="custEmail" placeholder="hello@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label> Password </label>
+                        <input type="password" id="custPass" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn" id="custLoginBtn" style="width: 100%;"> Sign In </button>
+                    <p style="text-align:center; margin-top:20px; font-size:14px;"> 
+                        Don't have an account? 
+                        <a onclick="navigateTo('sec-customer-signup')" style="color:var(--accent-rust); font-weight:bold;"> 
+                            Sign Up 
+                        </a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="sec-customer-signup" class="page-section">
+        <div class="login-wrapper">
+            <div class="form-box">
+                <h2> Create an Account </h2>
+                <p style="text-align:center; color:#666; margin-bottom:20px;"> 
+                    Join RISHI'd Café to order and book tables. 
+                </p>
+                <form id="customerSignupForm">
+                    <div class="error-msg" id="custSignupError"></div>
+                    <div class="form-group">
+                        <label> Full Name </label>
+                        <input type="text" id="signName" placeholder="Jane Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label> Email Address </label>
+                        <input type="email" id="signEmail" placeholder="hello@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label> Password </label>
+                        <input type="password" id="signPass" placeholder="••••••••" minlength="6" required>
+                    </div>
+                    <button type="submit" class="btn" id="custSignBtn" style="width: 100%;"> Create Account </button>
+                    <p style="text-align:center; margin-top:20px; font-size:14px;">
+                        Already have an account? 
+                        <a onclick="navigateTo('sec-customer-login')" style="color:var(--accent-rust); font-weight:bold;">
+                            Login Here
+                        </a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="sec-admin-login" class="page-section">
+        <div class="login-wrapper">
+            <div class="form-box" style="text-align: center;">
+                <i class="fas fa-mug-hot" style="font-size: 40px; color: var(--accent-rust); margin-bottom: 10px;"></i>
+                <h2> Staff Portal </h2>
+                <p style="color:#666; margin-bottom:20px;"> Authorized Personnel Only </p>
+                <form id="adminLoginForm">
+                    <div class="error-msg" id="adminErrorMsg"> 
+                        User not found or incorrect password. 
+                    </div>
+                    <div class="form-group" style="text-align: left;">
+                        <label> Staff ID </label>
+                        <input type="text" id="staffId" placeholder="Enter your ID" required>
+                    </div>
+                    <div class="form-group" style="text-align: left;">
+                        <label> Password </label>
+                        <input type="password" id="staffPassword" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn" id="adminLoginBtn" style="width: 100%;">
+                        Secure Login
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="sec-booking" class="page-section">
+        <section class="sub-hero" style="background-image: url('image/Book Table.png');">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1> Reserve Your Table </h1>
+            </div>
+        </section>
+        <section class="wrapper">
+            <div class="form-box" style="max-width: 800px;">
+                <form id="bookingForm" onsubmit="submitBooking(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label> Full Name </label>
+                            <input type="text" id="bookName" required>
+                        </div>
+                        <div class="form-group">
+                            <label> Phone </label>
+                            <input type="tel" id="bookPhone" pattern="[0-9]{10}" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label> Date </label>
+                            <input type="date" id="bookDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label> Time </label>
+                            <input type="time" id="bookTime" required>
+                        </div>
+                    </div>
+    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label> Number of Guests </label>
+                            <select id="bookGuests" required>
+                                <option value="1 Person">1 Person</option>
+                                <option value="2 People" selected>2 People</option>
+                                <option value="3 People">3 People</option>
+                                <option value="4 People">4 People</option>
+                                <option value="5+ People">5+ People</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label> Special Requests </label>
+                            <input type="text" id="bookRequests" placeholder="e.g. Window seat, Birthday...">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 10px;"> Confirm Booking </button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <div id="sec-contact" class="page-section">
+        <section class="sub-hero" style="background-image: url('image/Contact.png');">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1> Get in Touch </h1>
+            </div>
+        </section>
+        <section class="wrapper">
+            <div class="form-box">
+                <form onsubmit="event.preventDefault(); alert('Message sent!'); this.reset(); navigateTo('sec-home');">
+                    <div class="form-group">
+                        <label> Name </label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label> Email </label>
+                        <input type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label> Message </label>
+                        <textarea rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;"> Send Message </button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <div id="sec-checkout" class="page-section">
+        <section class="wrapper">
+            <h1 style="text-align: center; margin-bottom: 40px; font-size: 36px;"> 
+                Secure Checkout 
+            </h1>
+            <div class="checkout-grid">
+                <div class="payment-section">
+                    <div class="payment-tabs">
+                        <div class="pay-tab active" onclick="switchTab('card')">
+                            <i class="fas fa-credit-card"></i> 
+                            Card 
+                        </div>
+                        <div class="pay-tab" onclick="switchTab('upi')">
+                            <i class="fas fa-mobile-alt"></i> 
+                            UPI 
+                        </div>
+                    </div>
+                    <form id="paymentForm">
+                        <div id="card-area" class="pay-form-area active">
+                            <div class="form-group">
+                                <label> Card Number </label>
+                                <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label> Expiry </label>
+                                    <input type="text" id="cardExp" placeholder="MM/YY" maxlength="5" required>
+                                </div>
+                                <div class="form-group">
+                                    <label> CVV </label>
+                                    <input type="password" id="cardCvv" placeholder="123" maxlength="4" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="upi-area" class="pay-form-area">
+                            <div class="form-group">
+                                <label> UPI ID </label>
+                                <input type="text" id="upiId" placeholder="username@bank">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="summary-section">
+                    <h2 style="color: #fff;"> Order Summary </h2>
+                    <div id="checkoutItemsList" class="bill-item-list"></div>
+                    <div class="summary-row">
+                        <span> Subtotal </span>
+                        <span id="chkSubtotal"> ₹-- </span>
+                    </div>
+                    <div class="summary-row">
+                        <span> Tax (8.5%) </span>
+                        <span id="chkTax"> ₹-- </span>
+                    </div>
+                    <div class="summary-total">
+                        <span> Total </span>
+                        <span id="chkTotal" style="color: var(--accent-rust);"> ₹-- </span>
+                    </div>
+                    
+                    <button type="button" class="btn" style="width: 100%; margin-top: 30px; display:flex; justify-content:center; align-items:center; gap:10px;" id="masterPayBtn" onclick="processPayment()"> 
+                        Pay Securely 
+                        <i class="fas fa-lock"></i>
+                    </button>
+                    <button class="btn" style="width: 100%; margin-top: 15px; background: transparent; border: 1px solid #fff;" onclick="navigateTo('sec-menu')"> 
+                        Back to Menu 
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3> Bill Details </h3>
+            <i class="fas fa-times close-cart" onclick="toggleCart()"></i>
+        </div>
+        
+        <div class="cart-body" id="cartItemsContainer"></div>
+        
+        <div class="cart-footer">
+            <div class="cart-total-line">
+                <span> Total: </span>
+                <span id="cartTotalValue"> ₹0.00 </span>
+            </div>
+            <button class="btn" id="checkoutBtn" style="width:100%; font-size:16px; opacity: 0.5; cursor: not-allowed;" disabled onclick="prepareCheckout()"> 
+                Checkout 
+            </button>
+        </div>
+    </div>
+    
+    <button class="floating-cart-btn" id="floatingCartBtn" onclick="toggleCart()">
+        <i class="fas fa-receipt"></i>
+        <span class="cart-badge" id="cartBadge"> 0 </span>
+    </button>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-icons">
+                <a><i class="fab fa-instagram"></i></a>
+                <a><i class="fab fa-twitter"></i></a>
+                <a><i class="fab fa-facebook-f"></i></a>
+            </div>
+            <div>
+                &copy; 2026 RISHI'd Café | Designed by Rishita. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"> </script>
+</body>
+</html>

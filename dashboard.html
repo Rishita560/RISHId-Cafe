@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Admin Dashboard - RISHI'd Café </title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-mug-hot"></i> 
+            RISHI'd Café 
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a class="nav-item active" data-target="sec-overview">
+                    <i class="fas fa-home"></i> 
+                    Overview 
+                </a>
+            </li>
+            <li>
+                <a class="nav-item" data-target="sec-orders">
+                    <i class="fas fa-clipboard-list"></i> 
+                    Live Orders 
+                </a>
+            </li>
+            <li>
+                <a class="nav-item" data-target="sec-reservations">
+                    <i class="fas fa-calendar-check"></i> 
+                    Reservations 
+                </a>
+            </li>
+            <li>
+                <a class="nav-item" data-target="sec-menu">
+                    <i class="fas fa-coffee"></i> 
+                    Menu Editor 
+                </a>
+            </li>
+            <li>
+                <a class="nav-item" data-target="sec-customers">
+                    <i class="fas fa-users"></i> 
+                    Customers 
+                </a>
+            </li>
+            <li>
+                <a class="nav-item" data-target="sec-settings">
+                    <i class="fas fa-cog"></i> 
+                    Settings 
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <i class="fas fa-bars hamburger" id="menuToggle"></i>
+            <div class="topbar-right">
+                <div class="staff-profile">
+                    <div class="avatar"> A </div>
+                    <span> Admin User </span>
+                </div>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> 
+                    Logout 
+                </button>
+            </div>
+        </header>
+
+        <div class="dashboard-container">
+            
+            <div id="sec-overview" class="content-section active">
+                <div class="section-title"> 
+                    Dashboard Overview 
+                    <button class="btn-primary" onclick="loadAllData()">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: rgba(186, 90, 58, 0.1); color: var(--accent-rust);">
+                            <i class="fas fa-receipt"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3 id="statOrders"> -- </h3>
+                            <p> Active Orders </p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: rgba(40, 167, 69, 0.1); color: #28a745;">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3 id="statRevenue"> ₹-- </h3>
+                            <p> Active Revenue </p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: rgba(0, 123, 255, 0.1); color: #007bff;">
+                            <i class="fas fa-chair"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3 id="statReservations"> -- </h3>
+                            <p> Pending Bookings </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-section">
+                    <div class="table-header">
+                        <h2> Recent Orders Summary </h2>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="overviewTable">
+                            <thead>
+                                <tr>
+                                    <th> Order ID </th>
+                                    <th> Items </th>
+                                    <th> Amount </th>
+                                    <th> Status </th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sec-orders" class="content-section">
+                <div class="section-title"> 
+                    Live Kitchen Orders 
+                    <button class="btn-primary" onclick="loadOrders()">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+                <div class="table-section">
+                    <div class="table-responsive">
+                        <table id="ordersTable">
+                            <thead>
+                                <tr>
+                                    <th> Time </th>
+                                    <th> Order ID </th>
+                                    <th> Order Details </th>
+                                    <th> Total </th>
+                                    <th> Status </th>
+                                    <th> Actions </th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sec-reservations" class="content-section">
+                <div class="section-title">
+                    Table Reservations 
+                    <button class="btn-primary" onclick="loadReservations()">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+                <div class="table-section">
+                    <div class="table-responsive">
+                        <table id="reservationsTable">
+                            <thead>
+                                <tr>
+                                    <th> Date & Time </th>
+                                    <th> Customer Name </th>
+                                    <th> Contact </th>
+                                    <th> Guests </th>
+                                    <th> Requests </th>
+                                    <th> Status </th>
+                                    <th> Actions </th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sec-menu" class="content-section">
+                <div class="section-title">
+                    Menu Management 
+                    <button class="btn-primary" onclick="addNewMenuItem()">
+                        <i class="fas fa-plus"></i> 
+                        Add New Item 
+                    </button>
+                </div>
+                <div class="table-section">
+                    <div class="table-responsive">
+                        <table id="menuTable">
+                            <thead>
+                                <tr>
+                                    <th> Item Name </th>
+                                    <th> Category </th>
+                                    <th> Price </th>
+                                    <th> Status </th>
+                                    <th> Actions </th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sec-customers" class="content-section">
+                <div class="section-title">
+                    Customer Database 
+                    <button class="btn-primary" onclick="loadCustomers()">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+                <div class="table-section">
+                    <div class="table-responsive">
+                        <table id="customersTable">
+                            <thead>
+                                <tr>
+                                    <th> Customer ID </th>
+                                    <th> Full Name </th>
+                                    <th> Email Address </th>
+                                    <th> Join Date </th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sec-settings" class="content-section">
+                <div class="section-title"> 
+                    System Settings 
+                </div>
+                <div class="table-section">
+                    <div class="table-header">
+                        <h2> Cafe Information </h2>
+                    </div>
+                    <form class="settings-grid" onsubmit="event.preventDefault(); alert('Settings Saved successfully!');">
+                        <div class="form-group">
+                            <label> Cafe Name </label>
+                            <input type="text" value="RISHI'd Café" required>
+                        </div>
+                        <div class="form-group">
+                            <label> Contact Phone </label>
+                            <input type="text" value="7845567890" required>
+                        </div>
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label> Address </label>
+                            <input type="text" value="123 Coffee Lane, Brew City, RS" required>
+                        </div>
+                        <div class="form-group" style="grid-column: 1 / -1; margin-top: 10px;">
+                            <button type="submit" class="btn-primary" style="padding: 12px 20px;"> Save Changes </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="dashboard.js"> </script>
+</body>
+</html>
