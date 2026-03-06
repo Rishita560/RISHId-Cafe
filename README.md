@@ -46,9 +46,9 @@ cd rishid-cafe
 pip install -r requirements.txt
 ```
 3. Set Environment Variables
-```bash
-Create a .env file in the root directory and add your database credentials:
 
+Create a .env file in the root directory and add your database credentials:
+```bash
 DB_HOST=your_database_host
 
 DB_PORT=your_database_port
@@ -67,12 +67,11 @@ The application will run at:
 
 http://localhost:5000
 
-Future Enhancements :
+## Future Enhancements :
 
 Re-enable Flask-Mail SMTP server for automated customer email receipts and staff notifications.
 
 Add user profile pages for customers to view their past order history.
 
-Designed and built by Rishita.
-
----
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+** Designed and built by Rishita. **
