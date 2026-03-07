@@ -27,10 +27,10 @@ Built with a responsive vanilla frontend and a robust Python/Flask backend, this
 * **Business Analytics:** View total revenue, active orders, and a comprehensive customer database.
 
 ## Built With
-* ```**Frontend:**``` HTML, CSS, JavaScript
-* ```**Backend:**``` Python, Flask, Flask-CORS
-* ```**Database:**``` MySQL (Hosted in the cloud via Aiven)
-* ```**Deployment:**``` Render (Gunicorn WSGI)
+* ```Frontend:``` HTML, CSS, JavaScript
+* ```Backend:``` Python, Flask, Flask-CORS
+* ```Database:``` MySQL (Hosted in the cloud via Aiven)
+* ```Deployment:``` Render (Gunicorn WSGI)
 
 ## Running the Project Locally
 
